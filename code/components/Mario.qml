@@ -43,15 +43,4 @@ Item {
         repeat: true
         onTriggered: Mario.update()
     }
-
-//    Keys.onPressed: {
-//        if (event.isAutoRepeat) return
-//        Mario.keyPress(event.key)
-//    }
-//
-//    Keys.onReleased: {
-//        if (event.isAutoRepeat) return
-//        Mario.keyRelease(event.key)
-//    }
-
 }

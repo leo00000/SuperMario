@@ -1,4 +1,5 @@
 import QtQuick 2.7
+import "../components"
 import "../SuperMario.js" as SuperMario
 
 Item {
@@ -265,10 +266,185 @@ Item {
 
     Item {
         id: bricks
+        anchors.left: background.left
+
+        Brick {
+            x: 858; y: 365
+        }
+
+        Brick {
+            x: 944; y: 365
+        }
+
+        Brick {
+            x: 1030; y: 365
+        }
+
+        Brick {
+            x: 3299; y: 365
+        }
+
+        Brick {
+            x: 3385; y: 365
+        }
+
+        Brick {
+            x: 3430; y: 193
+        }
+
+        Brick {
+            x: 3473; y: 193
+        }
+
+        Brick {
+            x: 3516; y: 193
+        }
+
+        Brick {
+            x: 3559; y: 193
+        }
+
+        Brick {
+            x: 3602; y: 193
+        }
+
+        Brick {
+            x: 3645; y: 193
+        }
+
+        Brick {
+            x: 3688; y: 193
+        }
+
+        Brick {
+            x: 3731; y: 193
+        }
+
+        Brick {
+            x: 3901; y: 193
+        }
+
+        Brick {
+            x: 3944; y: 193
+        }
+
+        Brick {
+            x: 3987; y: 193
+        }
+        /**/
+        Brick {
+            x: 4030; y: 365
+        }
+
+        Brick {
+            x: 4287; y: 365
+        }
+        /**/
+        Brick {
+            x: 4330; y: 365
+        }
+
+        Brick {
+            x: 5058; y: 365
+        }
+
+        Brick {
+            x: 5187; y: 193
+        }
+
+        Brick {
+            x: 5230; y: 193
+        }
+
+        Brick {
+            x: 5273; y: 193
+        }
+
+        Brick {
+            x: 5488; y: 193
+        }
+
+        Brick {
+            x: 5574; y: 193
+        }
+
+        Brick {
+            x: 5617; y: 193
+        }
+
+        Brick {
+            x: 5531; y: 365
+        }
+
+        Brick {
+            x: 5574; y: 365
+        }
+
+        Brick {
+            x: 7202; y: 365
+        }
+
+        Brick {
+            x: 7245; y: 365
+        }
+
+        Brick {
+            x: 7331; y: 365
+        }
     }
 
     Item {
         id: coinBoxes
+        anchors.left: background.left
+
+
+        CoinBox {
+            x: 685; y:365
+        }
+
+        CoinBox {
+            x: 901; y:365
+        }
+
+        CoinBox {
+            x: 987; y:365
+        }
+
+        CoinBox {
+            x: 943; y:193
+        }
+
+        CoinBox {
+            x: 3342; y:365
+        }
+
+        CoinBox {
+            x: 4030; y:193
+        }
+
+        CoinBox {
+            x: 4544; y:365
+        }
+
+        CoinBox {
+            x: 4672; y:365
+        }
+
+        CoinBox {
+            x: 4672; y:193
+        }
+
+        CoinBox {
+            x: 4800; y:365
+        }
+
+        CoinBox {
+            x: 5531; y:193
+        }
+
+        CoinBox {
+            x: 7288; y:365
+        }
     }
 
     Item {
@@ -277,6 +453,80 @@ Item {
 
     Item {
         id: enemies
+        anchors.left: background.left
+
+        Goomba {
+            x: 510 + 500; y: 495
+            visible: mario.camera_x >= x - 800
+        }
+
+        Goomba {
+            x: 1400 + 500; y: 495
+            visible: mario.camera_x >= x - 800
+        }
+
+        Goomba {
+            x: 1740 + 500; y: 495
+            visible: mario.camera_x >= x - 800
+        }
+
+        Goomba {
+            x: 3080 + 500; y: 193
+            visible: mario.camera_x >= x - 800
+        }
+        Goomba {
+            x: 3090 + 500; y: 193
+            visible: mario.camera_x >= x - 800
+        }
+
+        Goomba {
+            x: 3750 +500; y: 495
+            visible: mario.camera_x >= x - 800
+        }
+
+//        Goomba {
+//            x: 4150 +500; y: 495
+//            visible: mario.camera_x >= x - 800
+//        }
+
+        Goomba {
+            x: 4470 +500; y: 495
+            visible: mario.camera_x >= x - 800
+        }
+        Goomba {
+            x: 4950 +500; y: 495
+            visible: mario.camera_x >= x - 800
+        }
+        Goomba {
+            x: 5100 +500; y: 495
+            visible: mario.camera_x >= x - 800
+        }
+        Goomba {
+            x: 6800 +500; y: 495
+            visible: mario.camera_x >= x - 800
+        }
+        Goomba {
+            x: 8504 +500; y: 495
+            visible: mario.camera_x >= x - 800
+        }
+        Goomba {
+            x: 8775 +500; y: 495
+            visible: mario.camera_x >= x - 800
+        }
+        Goomba {
+            x: 2740 +500; y: 495
+            visible: mario.camera_x >= x - 800
+        }
+        Goomba {
+            x: 2740 +500; y: 495
+            visible: mario.camera_x >= x - 800
+        }
+
+        Koopa {
+            x: 600; y: 495
+//            visible: mario.camera_x >= x - 800
+        }
+
     }
 
     Timer {
@@ -296,8 +546,8 @@ Item {
         SuperMario.keyRelease(event.key)
     }
 
-    MouseArea {
-        anchors.fill: parent
-        onClicked: console.log(ground.resources[0])
-    }
+//    MouseArea {
+//        anchors.fill: parent
+//        onClicked: console.log(ground.resources[0])
+//    }
 }

@@ -233,6 +233,9 @@ function detectCollisions() {
     detectMarioGroundCollisions()
     detectMarioPipesCollisions()
     detectMarioStepsCollisions()
+    detectMarioBricksCollisions()
+    detectMarioCoinBoxCollisions()
+    detectMarioEnemiesCollisions()
 }
 
 function detectMarioGroundCollisions() {
@@ -240,7 +243,7 @@ function detectMarioGroundCollisions() {
     for (var i = 0; i < ground.children.length; i++) {
         var rect = ground.children[i]
         if (offset > (rect.x - mario.width) && offset < (rect.x + rect.width)) {
-            if (y > (rect.y - mario.height) && y < (rect.y + rect.height - mario.height)) {
+            if (y > (rect.y - mario.height) && y < (rect.y + rect.height)) {
                 yVel = 0
                 y = rect.y - mario.height
                 return true
@@ -258,7 +261,7 @@ function detectMarioPipesCollisions() {
     for (var i = 0; i < pipes.children.length; i++) {
         var rect = pipes.children[i]
         if (offset > (rect.x - mario.width) && offset < (rect.x + rect.width)) {
-            if (y > (rect.y - mario.height) && y < (rect.y + rect.height - mario.height)) {
+            if (y > (rect.y - mario.height) && y < (rect.y + rect.height)) {
                 if (mario.y <= rect.y - mario.height) {
                     yVel = 0
                     y = rect.y - mario.height
@@ -276,7 +279,7 @@ function detectMarioStepsCollisions() {
     for (var i = 0; i < steps.children.length; i++) {
         var rect = steps.children[i]
         if (offset > (rect.x - mario.width) && offset < (rect.x + rect.width)) {
-            if (y > (rect.y - mario.height) && y < (rect.y + rect.height - mario.height)) {
+            if (y > (rect.y - mario.height) && y < (rect.y + rect.height)) {
                 if (mario.y <= rect.y - mario.height) {
                     yVel = 0
                     y = rect.y - mario.height
@@ -284,6 +287,70 @@ function detectMarioStepsCollisions() {
                 } else {
                     x = mario.x
                 }
+            }
+        }
+    }
+}
+
+function detectMarioBricksCollisions() {
+    var offset = x + mario.camera_x
+    for (var i = 0; i < bricks.children.length; i++) {
+        var rect = bricks.children[i]
+        if (offset > (rect.x - mario.width) && offset < (rect.x + rect.width)) {
+            if (y > (rect.y - mario.height) && y < (rect.y + rect.height)) {
+                if (mario.y <= rect.y - mario.height) {
+                    yVel = 0
+                    y = rect.y - mario.height
+//                    return true
+                } else {
+                    x = mario.x
+                    /* Hit the brick from below */
+                    if (mario.y >= rect.y + rect.height) {
+                        yVel = 3
+                        keys.jump = false
+                        y = rect.y + rect.height
+                        rect.test(
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+function detectMarioCoinBoxCollisions() {
+    var offset = x + mario.camera_x
+    for (var i = 0; i < coinBoxes.children.length; i++) {
+        var rect = coinBoxes.children[i]
+        if (offset > (rect.x - mario.width) && offset < (rect.x + rect.width)) {
+            if (y > (rect.y - mario.height) && y < (rect.y + rect.height)) {
+                if (mario.y <= rect.y - mario.height) {
+                    yVel = 0
+                    y = rect.y - mario.height
+//                    return true
+                } else {
+                    x = mario.x
+                    /* Hit the coin box from below */
+                    if (mario.y >= rect.y + rect.height) {
+                        yVel = 3
+                        keys.jump = false
+                        y = rect.y + rect.height
+                        rect.isOpen = true
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+function detectMarioEnemiesCollisions() {
+    var offset = x + mario.camera_x
+    for (var i = 0; i < enemies.children.length; i++) {
+        var rect = enemies.children[i]
+        if (offset > (rect.x - mario.width) && offset < (rect.x + rect.width)) {
+            if (y > (rect.y - mario.height) && y < (rect.y + rect.height)) {
+                rect.isSquished = true
             }
         }
     }

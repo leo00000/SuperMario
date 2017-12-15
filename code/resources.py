@@ -90,6 +90,59 @@ class GraphicsEffects:
         # cursor for menu
         self.items["cursor"] = self.all["item_objects"].copy(24, 160, 8, 8).scaled(20, 20)
 
+        # brick
+        self.items["brick"] = []
+        self.items["brick"].append(self.all["tile_set"].copy(16, 0, 16, 16).scaled(44, 44))
+        self.items["brick"].append(self.all["tile_set"].copy(432, 0, 16, 16).scaled(44, 44))
+
+        # coin_box
+        self.items["coin_box"] = []
+        self.items["coin_box"].append(self.all["tile_set"].copy(384, 0, 16, 16).scaled(44, 44))
+        self.items["coin_box"].append(self.all["tile_set"].copy(400, 0, 16, 16).scaled(44, 44))
+        self.items["coin_box"].append(self.all["tile_set"].copy(416, 0, 16, 16).scaled(44, 44))
+        self.items["coin_box"].append(self.all["tile_set"].copy(432, 0, 16, 16).scaled(44, 44))
+
+        # enemies
+        self.items["goomba"] = []
+        self.items["goomba"].append(self.all["enemies"].copy(0, 4, 16, 16).scaled(40, 40))
+        self.items["goomba"].append(self.all["enemies"].copy(30, 4, 16, 16).scaled(40, 40))
+        self.items["goomba"].append(self.all["enemies"].copy(61, 4, 16, 16).scaled(40, 40))
+        self.items["goomba"].append(self.items["goomba"][1].mirrored(True, False))
+
+        # img = QImage(160, 40, QImage.Format_RGBA8888)
+        # p = QPainter(img)
+        # p.drawImage(QRect(0, 0, 40, 40), self.items["goomba"][0])
+        # p.drawImage(QRect(40, 0, 40, 40), self.items["goomba"][1])
+        # p.drawImage(QRect(80, 0, 40, 40), self.items["goomba"][2])
+        # p.drawImage(QRect(120, 0, 40, 40), self.items["goomba"][3])
+        # img.save("goomba.png")
+
+        self.items["koopa"] = []
+        self.items["koopa"].append(self.all["enemies"].copy(150, 0, 16, 24).scaled(16 * 2.5, 24 * 2.5))
+        self.items["koopa"].append(self.all["enemies"].copy(180, 0, 16, 24).scaled(16 * 2.5, 24 * 2.5))
+        self.items["koopa"].append(self.all["enemies"].copy(360, 5, 16, 15).scaled(40, 15 * 2.5))
+        self.items["koopa"].append(self.items["koopa"][2].mirrored(True, False))
+
+        # mushroom
+        self.items["mushroom"] = self.all["item_objects"].copy(0, 0, 16, 16).scaled(16 * 2.5, 16 * 2.5)
+
+        # life_mushroom
+        self.items["life_mushroom"] = self.all["item_objects"].copy(16, 0, 16, 16).scaled(16 * 2.5, 16 * 2.5)
+
+        # flower
+        self.items["flower"] = []
+        self.items["flower"].append(self.all["item_objects"].copy(0, 32, 16, 16).scaled(16 * 2.5, 16 * 2.5))
+        self.items["flower"].append(self.all["item_objects"].copy(16, 32, 16, 16).scaled(16 * 2.5, 16 * 2.5))
+        self.items["flower"].append(self.all["item_objects"].copy(32, 32, 16, 16).scaled(16 * 2.5, 16 * 2.5))
+        self.items["flower"].append(self.all["item_objects"].copy(48, 32, 16, 16).scaled(16 * 2.5, 16 * 2.5))
+
+        # coin
+        self.items["coin"] = []
+        self.items["coin"].append(self.all["item_objects"].copy(52, 113, 8, 14).scaled(8 * 2.5, 14 * 2.5))
+        self.items["coin"].append(self.all["item_objects"].copy(4, 113, 8, 14).scaled(8 * 2.5, 14 * 2.5))
+        self.items["coin"].append(self.all["item_objects"].copy(20, 113, 8, 14).scaled(8 * 2.5, 14 * 2.5))
+        self.items["coin"].append(self.all["item_objects"].copy(36, 113, 8, 14).scaled(8 * 2.5, 14 * 2.5))
+
 
 class GraphicsProvider(QQuickImageProvider):
     def __init__(self):
